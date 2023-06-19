@@ -1,0 +1,32 @@
+  <div class="container">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">
+          <ion-icon name="search-outline" class="search-icon"></ion-icon>
+        </span>
+      </div>
+      <input type="text" class="form-control futuristic-input" placeholder="Buscar productos..." [(ngModel)]="searchTerm" (input)="searchProducts()">
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-4" *ngFor="let product of filteredProducts">
+        <div class="card futuristic-card mb-4">
+          <div class="card-banner">
+            <figure class="product-banner img-holder" style="--width: 448; --height: 470;">
+              <img [src]="product.imagen" width="448" height="470" loading="lazy" alt="Short Sleeve Shirt" class="card-img-top">
+            </figure>
+          </div>
+          <div class="card-body">
+            <h3 class="h4 card-title futuristic-title">
+              <a [routerLink]="'/product/' + product.id">{{ product.titulo }}</a>
+            </h3>
+            <span class="price futuristic-price">Precio: {{ product.precio | currency }}</span>
+            <button (click)="addToCart(product)" class="btn futuristic-button mt-3">
+              <ion-icon name="bag" aria-hidden="true"></ion-icon>
+              <span class="span">Agregar al carrito</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
